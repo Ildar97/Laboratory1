@@ -26,3 +26,53 @@ def IsConsonantsLetters(word):
             if word[i].lower() == ConsonantsLetters[j]:
                 return True
     return False
+
+def SplitTextByPunctuationMarks (word = ""):
+    punctuations = [",",".","!","?",";"," "]
+    b = ""
+    a = []
+    c = 0
+    for i in range(len(word)):
+        for j in range(len(punctuations)):
+            if word[i] == punctuations[j]:
+                c += 1
+                if len(b) != 0:
+                    a.append(b)
+                    b = ""
+                break
+        if (c == 0):
+            b += word[i]
+        c = 0
+    return a
+
+def CreateDictionary(l: list) -> dict:
+    d = dict()
+    for x in l:
+        d[x] = l.count(x)
+    return d
+
+a = [1,-786,123,7565,-345,-5456456,12334]
+x, y = MaxAndMinElement(a)
+print("max = {0}, min = {1}".format(x,y))
+
+print(sep="\n")
+n = 6
+print("{0} член Фибоначчи = {1}".format(n,Fibonacci(n)))
+
+print(sep="\n")
+IsLetter = IsConsonantsLetters("Hello my friend!")
+if IsLetter == True:
+    print("Есть согласная буква")
+else:
+    print("Согласной буквы нет")
+
+print(sep="\n")
+a = SplitTextByPunctuationMarks("Hello, my aaaee friend! hot; dog aeoyu hot www friend my hello")
+print("Слова с согласными буквами :")
+for i in range(len(a)):
+    if IsConsonantsLetters(a[i]) == True:
+        print(a[i])
+
+print(sep="\n")
+d = CreateDictionary(a)
+print(d.items())
